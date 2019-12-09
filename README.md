@@ -1,8 +1,6 @@
 # Yamcha
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/yamcha`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Yamcha is a Yaml Validator.
 
 ## Installation
 
@@ -22,7 +20,29 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+yaml = {a: 1}.to_yaml
+Yamcha::Validator.new(yaml).validate!
+#=> {":a"=>"1"}
+```
+
+If there is a duplicated mapping key in the yaml, it occures raise `Yamcha::Validator::DuplicatedMappingKey::Error`.
+
+```ruby
+yaml = <<~YAML
+---
+a: 1
+a: 2
+YAML
+Yamcha::Validator.new(yaml).validate!
+#=> Yamcha::Validator::DuplicatedMappingKey::Error (duplicated key `a` exists)
+```
+
+If you would like to validate `*.yml` file itself, please try like the following example.
+
+```ruby
+Yamcha::Validator.new(File.read('./sample.yml')).validate!
+```
 
 ## Development
 
