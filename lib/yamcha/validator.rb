@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "yamcha/validator/duplicated_mapping_key"
+
 module Yamcha
   class Validator
     attr_reader :original_yaml
@@ -13,7 +15,7 @@ module Yamcha
     end
 
     private
-    
+
     def parsed_nodes
       @parsed_nodes ||= YAML.parse(original_yaml)
     end

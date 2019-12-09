@@ -1,5 +1,11 @@
 # frozen_string_literal: true
 
+require "yamcha/node_resolver/base"
+require "yamcha/node_resolver/document"
+require "yamcha/node_resolver/mapping"
+require "yamcha/node_resolver/scalar"
+require "yamcha/node_resolver/sequence"
+
 module Yamcha
   class NodeResolver
     class << self

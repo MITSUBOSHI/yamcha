@@ -13,5 +13,6 @@ module Yamcha
         raise NotImplementedError
       end
     end
+    private_constant :Base
   end
 end
